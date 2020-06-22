@@ -6,15 +6,16 @@ class TextFieldAndroid {
   TextInputType keyboardType;
   String hintText;
   IconData icon;
+  IconData suffixIcon;
 
   TextFieldAndroid(
       {@required this.keyboardType,
       @required this.hintText,
-      @required this.icon});
+      @required this.icon,
+      @required this.suffixIcon});
 
   buildAndroidTextField() {
     return MaterialTextFieldData(
-
         autofocus: true,
         autocorrect: true,
         keyboardType: keyboardType,
@@ -31,6 +32,7 @@ class TextFieldAndroid {
             size: 30,
             color: Colors.black,
           ),
+          suffixIcon: Icon(suffixIcon,size: 25,color: Colors.black,),
           border: InputBorder.none
         ));
   }
