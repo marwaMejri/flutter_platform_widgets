@@ -5,13 +5,13 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 class TextFieldAndroid {
   TextInputType keyboardType;
   String hintText;
-  IconData icon;
+  IconData prefixIcon;
   IconData suffixIcon;
 
   TextFieldAndroid(
       {@required this.keyboardType,
       @required this.hintText,
-      @required this.icon,
+      @required this.prefixIcon,
       @required this.suffixIcon});
 
   buildAndroidTextField() {
@@ -28,7 +28,7 @@ class TextFieldAndroid {
              fontWeight: FontWeight.bold,
            ),
           prefixIcon: Icon(
-            icon,
+            prefixIcon,
             size: 30,
             color: Colors.black,
           ),
