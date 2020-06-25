@@ -5,10 +5,10 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 class TextFieldIos {
   TextInputType keyboardType;
   String hintText;
-  IconData icon;
+  IconData prefixIcon;
   IconData suffixIcon;
 
-  TextFieldIos({this.keyboardType, this.hintText, this.icon, this.suffixIcon});
+  TextFieldIos({@required this.keyboardType, @required this.hintText, @required this.prefixIcon,@required this.suffixIcon});
   buildIosTextField() {
     return CupertinoTextFieldData(
         keyboardType: keyboardType,
@@ -27,7 +27,7 @@ class TextFieldIos {
           color: Colors.black,
         ),
         prefix: Icon(
-          icon,
+          prefixIcon,
           size: 30,
           color: Colors.black,
         ),

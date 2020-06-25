@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutterplatformwidget/login_page.dart';
 
-void main() {
-  runApp(
-      DevicePreview(
-        builder: (context)=>MyApp(),
-      )
-  );
-}
+void main() =>runApp(
+
+  DevicePreview(
+    builder: (context) => MyApp(),
+  ),
+);
+
 
 class MyApp extends StatelessWidget {
   @override

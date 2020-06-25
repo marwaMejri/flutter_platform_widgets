@@ -23,9 +23,9 @@ class _ToggleButtonWidgetState extends State<ToggleButtonWidget>
     this.signUpTextColor=Colors.white;
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: 200),
     );
-    _animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    _animation = Tween(begin: 0.0, end: 0.85).animate(CurvedAnimation(
       parent: _animationController,
       curve: Curves.decelerate,
     ));
@@ -33,55 +33,59 @@ class _ToggleButtonWidgetState extends State<ToggleButtonWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: (70 * MediaQuery.of(context).size.width) / 375,
-          decoration: BoxDecoration(
-              color: Colors.black12,
-              borderRadius: BorderRadius.all(Radius.circular(60))),
-        ),
-        AnimatedBuilderWidget(animation: _animation,animationController: _animationController,),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                 _animationController.reverse();
-              },
-              child: ToggleButtonText(
-                text: "SIGN IN",
-                textColor: signInTextColor,
-              )
+    return Material(
+      color: Colors.transparent,
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          Container(
+            width: (300*MediaQuery.of(context).size.width)/375.0,
+            height: (55 * MediaQuery.of(context).size.width) / 375,
+            decoration: BoxDecoration(
+                color: Colors.black12,
+                borderRadius: BorderRadius.all(Radius.circular(60))),
+          ),
+          AnimatedBuilderWidget(animation: _animation,animationController: _animationController,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              GestureDetector(
+                onTap: () {
+                   _animationController.reverse();
+                },
+                child: ToggleButtonText(
+                  text: "SIGN IN",
+                  textColor: signInTextColor,
+                )
 
-            ),
-            GestureDetector(
-              onTap: () {
-                 _animationController.forward();
-                _animationController.addStatusListener((status) {
-                  if (status == AnimationStatus.completed) {
-                       setState(() {
-                         this.signUpTextColor=Colors.black;
-                         this.signInTextColor=Colors.white;
-                       });
+              ),
+              GestureDetector(
+                onTap: () {
+                   _animationController.forward();
+                  _animationController.addStatusListener((status) {
+                    if (status == AnimationStatus.completed) {
+                         setState(() {
+                           this.signUpTextColor=Colors.black;
+                           this.signInTextColor=Colors.white;
+                         });
 
-                  }else{
-                    setState(() {
-                      this.signUpTextColor=Colors.white;
-                      this.signInTextColor=Colors.black;
-                    });
-                  }
-                });
-              },
-              child: ToggleButtonText(
-                text: "SIGN UP",
-                textColor: signUpTextColor,
-              )
-            ),
-          ],
-        )
-      ],
+                    }else{
+                      setState(() {
+                        this.signUpTextColor=Colors.white;
+                        this.signInTextColor=Colors.black;
+                      });
+                    }
+                  });
+                },
+                child: ToggleButtonText(
+                  text: "SIGN UP",
+                  textColor: signUpTextColor,
+                )
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
